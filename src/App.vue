@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="grid-container">
+        <section class="header">
+            <Header />
+        </section>
+        <section class="content">
+            <Sidenav width="200" />
+            <Content />
+        </section>
+        <section class="footer">
+            <Footer />
+        </section>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Content from './components/Content.vue'
+import Footer from './components/Footer.vue'
+import Header from './components/Header.vue'
+import Sidenav from './components/Sidenav.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+    data () {
+        return {
+
+        }
+    },
+    components: {
+        Content,
+        Header,
+        Sidenav,
+        Footer
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    #app {
+        height: 100%;
+        font-family: 'Open Sans', sans-serif;
+        color: var(--black);
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-rows: 50px 1fr 25px;
+        height: 100%;
+    }
+
+    .content {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: auto 1fr;
+    }
+
 </style>
