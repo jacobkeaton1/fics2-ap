@@ -1,37 +1,27 @@
 <template>
-  <div class="sidenav open" :style="style" @click="toggleSidenav">
-      <div class="contents" :if="open">
-          <h1>Home</h1>
-      </div>
+  <div class="sidenav" :style="style">
+    <div class="sidenav__item" v-for="item in menuItems" :key="item.text">
+      <router-link :to="item.to">
+        <icon :name="item.icon" :label="item.text" scale="2"></icon>
+        <br>
+        {{item.text}}
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
+import Icon from 'vue-awesome/components/Icon'
+
 export default {
     props: {
-        width: {
-            type: Number,
-            required: true,
-        },
         menuItems: {
             type: Array,
             required: true,
         }
     },
-    data () {
-        return {
-            open: true,
-        }
-    },
-    methods: {
-        toggleSidenav() {
-            if (this.open) {
-                document.querySelector(".sidenav").classList.remove('open');
-            } else {
-                document.querySelector(".sidenav").classList.add('open');
-            }
-            this.open = !this.open
-        }
+    components: {
+      Icon
     },
     computed: {
         style() {
@@ -39,7 +29,7 @@ export default {
                 width: this.width + "px",
             }
         }
-    }
+    },
 }
 </script>
 
@@ -47,18 +37,29 @@ export default {
     .sidenav {
         display: grid;
         grid-gap: 10px;
-        grid-template-rows: repeat(auto-fit, minmax(25px, 1fr));
-        background: var(--black);
+        grid-template-rows: repeat(autofill, minmax(100px, 1fr));
+        background: var(--primary);
         box-shadow: 1px 0 2px 1px #00000032;
-        align-items: start;
-        justify-items: center;
-        transform: translateX(-85%);
-        transition: 0.2s;
         color: white;
+        width: var(--sidenavWidth);
+        text-align: center;
+        text-transform: lowercase;
+        font-weight: 100;
     }
 
-    .sidenav.open {
-        transform: translateX(0);
+    .sidenav a {
+        text-decoration: none;
+        color: var(--white);
     }
 
+    .sidenav__item {
+      display:grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+      height: 100%;
+      padding-top: 5px;
+      border-bottom: 1px solid #FFFFFF32;
+    }
 </style>

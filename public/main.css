@@ -1,9 +1,11 @@
 :root {
-    --primary: #A02534;
-    --secondary: #323D4F;
-    --accent1: #C4A986;
-    --accent2: #D3C79F;
-    --accent3: #CBCEC2;
-    --white: #fff;
+    --primary: #121F27;
+    --secondary: #416275;
+    --accent1: #6191A8;
+    --accent2: #BBCFDA;
+    --accent3: #E4EEF0;
+    --white: #FFFFFF;
     --black: #0D1014;
+
+    --sidenavWidth: 150px;
 }
